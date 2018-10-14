@@ -1,8 +1,8 @@
 class Product
   attr_accessor :amount, :price
 
-  def initialize(amount, price)
-    @amount = amount
-    @price = price
+  def initialize(params)
+    @amount = params[:amount]
+    @price = params[:price]
   end
 end
