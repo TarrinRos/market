@@ -21,3 +21,5 @@ begin
 rescue NotImplementedError
   puts "Вы пытаетесь вызвать пустой метод"
 end
+
+puts Dir.glob("#{current_path}/data/films/*.txt")
