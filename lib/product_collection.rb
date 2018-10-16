@@ -19,7 +19,7 @@ class ProductCollection
   end
 
   def sort
-    @collection.sort_by { |item| item.price }.reverse
+    @collection.sort_by { |item| item.title }
   end
 
   def to_a
