@@ -14,6 +14,8 @@ class ProductCollection
         @collection << Book.from_file(path)
       elsif path.include?("films")
         @collection << Movie.from_file(path)
+      elsif path.include?("disks")
+        @collection << Disk.from_file(path)
       end
     end
   end

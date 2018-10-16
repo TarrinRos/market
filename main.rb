@@ -1,6 +1,7 @@
 require_relative 'lib/product'
 require_relative 'lib/movie'
 require_relative 'lib/book'
+require_relative 'lib/disk'
 require_relative 'lib/product_collection'
 
 current_path = File.dirname(__FILE__)
