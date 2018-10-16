@@ -9,8 +9,8 @@ class Movie < Product
       title: movie[0],
       director: movie[1],
       year: movie[2],
-      price: movie[3],
-      amount: movie[4]
+      price: movie[3].to_i,
+      amount: movie[4].to_i
     )
   end
 
@@ -23,6 +23,6 @@ class Movie < Product
   end
 
   def to_s
-    "Фильм #{@title}, #{@year}, реж. #{@director}, #{super}"
+    "Фильм: #{@title}, #{@year}, реж. #{@director}, #{super}"
   end
 end

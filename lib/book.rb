@@ -15,8 +15,8 @@ class Book < Product
       title: book[0],
       genre: book[1],
       writer: book[2],
-      price: book[3],
-      amount: book[4]
+      price: book[3].to_i,
+      amount: book[4].to_i
     )
   end
 
