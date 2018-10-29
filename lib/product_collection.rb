@@ -20,11 +20,13 @@ class ProductCollection
     end
   end
 
+  # Сортирует список товаров по выбранным параметрам
   def sort
-    @collection.sort_by { |item| item.title }
+    @collection.sort_by { |item| item.price }.reverse
   end
 
+  # Возвращаем массив товаров
   def to_a
-    @collection
+    @collection = sort
   end
 end

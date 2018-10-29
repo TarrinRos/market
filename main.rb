@@ -16,10 +16,6 @@ puts collection.to_a
 puts "============================="
 puts
 
-option = "price"
-
-puts collection.sort
-
 begin
   Product.from_file("#{current_path}/data/films/01.txt")
 rescue NotImplementedError

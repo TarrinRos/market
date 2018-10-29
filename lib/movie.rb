@@ -1,6 +1,5 @@
 class Movie < Product
-  attr_reader :title, :director
-  attr_accessor :year
+  attr_reader :title, :director, :year
 
   def self.from_file(current_path)
     movie = File.readlines(current_path, chomp: true)

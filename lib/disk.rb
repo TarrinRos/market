@@ -1,6 +1,5 @@
 class Disk < Product
-  attr_reader :title, :singer
-  attr_accessor :year
+  attr_reader :title, :singer, :year
 
   def self.from_file(current_path)
     disk = File.readlines(current_path, chomp: true)
