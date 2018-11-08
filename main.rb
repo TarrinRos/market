@@ -17,7 +17,7 @@ loop do
 
   collection.sort!
 
-  collection.collection.each_with_index {|item, index| puts "#{index + 1}. #{item}"}
+  collection.collection.each_with_index { |item, index| puts "#{index + 1}. #{item}" }
 
   puts "0. Выход"
   puts "============================="
