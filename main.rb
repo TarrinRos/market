@@ -7,32 +7,39 @@ require_relative 'lib/basket'
 
 current_path = File.dirname(__FILE__)
 collection = ProductCollection.from_dir(current_path)
+basket = Basket.new(nil)
 
-puts "Что хотите купить?"
-puts "============================="
-puts
+loop do
+  puts
+  puts "Что хотите купить?"
+  puts "============================="
+  puts
 
-collection.sort!
+  collection.sort!
 
-collection.collection.each_with_index {|item, index| puts "#{index + 1}. #{item}"}
+  collection.collection.each_with_index {|item, index| puts "#{index + 1}. #{item}"}
 
-puts "0. Выход"
-puts "============================="
-puts
+  puts "0. Выход"
+  puts "============================="
+  puts
+  customer_choice = STDIN.gets.to_i
 
-begin
-  Product.from_file("#{current_path}/data/films/01.txt")
-rescue NotImplementedError
-  puts "Вы пытаетесь вызвать пустой метод"
+  if customer_choice > 0
+    customer_choice -= 1
+  else
+    abort 'Спасибо за покупку'
+  end
+
+  #
+  chosen_product = collection.collection[customer_choice]
+
+  puts "Вы выбрали #{chosen_product}"
+
+  # Уменьшает количество выбранного товара на 1
+  chosen_product.decrease_amount_by_one!
+
+  # Добавляет товар в корзину покупателя
+  basket.add_product!(chosen_product)
+
+  puts "В вашей корзине товаров на сумму: #{basket.count_final_price} eur."
 end
-
-customer_choice = STDIN.gets.to_i
-
-customer_choice -= 1
-
-basket = Basket.new(collection.collection[customer_choice])
-
-puts "Вы выбрали #{collection.collection[customer_choice]}"
-
-
-

@@ -10,6 +10,10 @@ class Product
     raise NotImplementedError
   end
 
+  def decrease_amount_by_one!
+    @amount -= 1
+  end
+
   def to_s
     "цена: #{@price} eur. (осталось #{@amount})"
   end
