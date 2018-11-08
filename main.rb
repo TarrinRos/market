@@ -22,24 +22,30 @@ loop do
   puts "0. Выход"
   puts "============================="
   puts
+
   customer_choice = STDIN.gets.to_i
 
   if customer_choice > 0
     customer_choice -= 1
+
+    # Продукт выбранный пользователем
+    chosen_product = collection.collection[customer_choice]
+
+    puts "Вы выбрали #{chosen_product}"
+
+    if chosen_product.amount > 0
+      # Уменьшает количество выбранного товара на 1
+      chosen_product.decrease_amount_by_one!
+
+      # Добавляет товар в корзину покупателя
+      basket.add_product!(chosen_product)
+    else
+      puts "Такой товар на складе закончился"
+    end
+
+    puts "В вашей корзине товаров на сумму: #{basket.count_final_price} eur."
   else
-    abort 'Спасибо за покупку'
+    puts "Вы купили товаров на сумму: #{basket.count_final_price} eur."
+    abort "Спасибо за покупку!"
   end
-
-  #
-  chosen_product = collection.collection[customer_choice]
-
-  puts "Вы выбрали #{chosen_product}"
-
-  # Уменьшает количество выбранного товара на 1
-  chosen_product.decrease_amount_by_one!
-
-  # Добавляет товар в корзину покупателя
-  basket.add_product!(chosen_product)
-
-  puts "В вашей корзине товаров на сумму: #{basket.count_final_price} eur."
 end
