@@ -51,6 +51,7 @@ loop do
     puts "С вас: #{basket.count_final_price} eur."
     puts
     puts "Спасибо за покупку!"
+
     exit
   end
 end
