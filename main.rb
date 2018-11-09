@@ -45,7 +45,12 @@ loop do
 
     puts "В вашей корзине товаров на сумму: #{basket.count_final_price} eur."
   else
-    puts "Вы купили товаров на сумму: #{basket.count_final_price} eur."
-    abort "Спасибо за покупку!"
+    puts "Вы купили:"
+    puts
+    puts basket.return_boughted_list
+    puts "С вас: #{basket.count_final_price} eur."
+    puts
+    puts "Спасибо за покупку!"
+    exit
   end
 end
