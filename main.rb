@@ -17,7 +17,7 @@ loop do
 
   collection.sort!
 
-  collection.collection.each_with_index { |item, index| puts "#{index + 1}. #{item}" }
+  collection.to_a.each_with_index { |item, index| puts "#{index + 1}. #{item}" }
 
   puts "0. Выход"
   puts "============================="
@@ -29,13 +29,13 @@ loop do
     customer_choice -= 1
 
     # Продукт выбранный пользователем
-    chosen_product = collection.collection[customer_choice]
-
-    puts "Вы выбрали #{chosen_product}"
+    chosen_product = collection.return_chosen_product(customer_choice)
 
     if chosen_product.amount > 0
       # Уменьшает количество выбранного товара на 1
       chosen_product.decrease_amount_by_one!
+
+      puts "Вы выбрали #{chosen_product}"
 
       # Добавляет товар в корзину покупателя
       basket.add_product!(chosen_product)
@@ -47,7 +47,7 @@ loop do
   else
     puts "Вы купили:"
     puts
-    puts basket.return_boughted_list
+    puts basket.return_purchased_list
     puts "С вас: #{basket.count_final_price} eur."
     puts
     puts "Спасибо за покупку!"

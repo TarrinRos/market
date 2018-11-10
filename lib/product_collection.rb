@@ -1,5 +1,4 @@
 class ProductCollection
-  attr_accessor :collection
 
   def self.from_dir(current_path)
     files_list = Dir.glob("#{current_path}/data/*/*.txt")
@@ -24,5 +23,14 @@ class ProductCollection
   # Сортирует список товаров по выбранным параметрам
   def sort!
     @collection = @collection.sort_by { |item| item.price }.reverse
+  end
+
+  # Возвращает выбранный пользователем продукт
+  def return_chosen_product(customer_choice)
+    @collection[customer_choice]
+  end
+
+  def to_a
+    @collection
   end
 end

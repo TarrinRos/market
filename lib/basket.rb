@@ -15,7 +15,7 @@ class Basket
     @basket.map { |product| product.price }.sum
   end
 
-  def return_boughted_list
+  def return_purchased_list
     @basket.each { |product| product}
   end
 end
